@@ -27,4 +27,4 @@ o.splitbelow = true -- When on, splitting a window will put the new window below
 o.termguicolors = true
 
 
-o.background = "light"
+o.background = "dark"

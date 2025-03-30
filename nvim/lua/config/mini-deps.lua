@@ -47,10 +47,17 @@ require('nvim-treesitter.configs').setup({
 })
 
 add({
-  source = 'sainnhe/everforest',
+  source = 'folke/neodev.nvim',
 })
 
 later(function()
+  add({
+    source = 'sainnhe/everforest',
+  })
+
   vim.g.everforest_enable_italic = true
-  vim.cmd('colorscheme everforest')
+  vim.g.everforest_transparent_background = 1
+  vim.g.everforest_ui_contrast = 'high'
+  vim.g.everforest_float_style = 'dim'
+  vim.cmd.colorscheme('everforest')
 end)

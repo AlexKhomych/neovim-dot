@@ -15,9 +15,27 @@ end
 
 local servers = { 'gopls', 'ts_ls', 'lua_ls' }
 
+local lsp_settings = {
+  lua_ls = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    }
+  }
+}
+
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  local server_opts = {
     on_attach = on_attach
   }
-end
 
+  if lsp_settings[lsp] then
+    server_opts.settings = lsp_settings[lsp]
+  end
+
+  nvim_lsp[lsp].setup(server_opts)
+end
